@@ -67,7 +67,7 @@ const appData = [
                 image: 'CategCo.png',
                 description: '💎 OFFRE EXCLUSIVE À 💥',
                tarifs: [
-                    { weight: '1g', price: 60.00 },
+                    { weight: '1g', price: 70.00 },
                     { weight: '2g', price: 100.00, badge: '🚨 OFFRE ÉCLAIR' }, 
                     { weight: '4g', price: 200.00 },
                     { weight: '6g', price: 300.00 }
