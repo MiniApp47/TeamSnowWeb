@@ -52,6 +52,29 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 // --- DONNÉES DE L'APPLICATION (TEAM SNOW) ---
 const appData = [
+     {
+        id: 'COCA',
+        name: '❄️ COCA',
+        type: 'Coca',
+        quality: '❄️ Top Scale',
+        image: 'CategCo.png', 
+        products: [
+            {
+                id: 'COCA_FESTIF',
+                name: '❄️ Coca',
+                farm: 'Produit Festif 🎉',
+                type: 'Coca',
+                image: 'CategCo.png',
+                description: '💎 OFFRE EXCLUSIVE À 💥',
+               tarifs: [
+                    { weight: '1g', price: 60.00 },
+                    { weight: '2g', price: 100.00, badge: '🚨 OFFRE ÉCLAIR' }, 
+                    { weight: '4g', price: 200.00 },
+                    { weight: '6g', price: 300.00 }
+                ]
+            }
+        ]
+    },
     {
         id: 'EXTA',
         name: '✨ EXTA',
@@ -90,29 +113,6 @@ const appData = [
                 tarifs: [
                     { weight: '1g', price: 50.00 },
                     { weight: '2g', price: 80.00 }
-                ]
-            }
-        ]
-    },
-    {
-        id: 'COCA',
-        name: '❄️ COCA',
-        type: 'Coca',
-        quality: '❄️ Top Scale',
-        image: 'CategCo.png', 
-        products: [
-            {
-                id: 'COCA_FESTIF',
-                name: '❄️ Coca',
-                farm: 'Produit Festif 🎉',
-                type: 'Coca',
-                image: 'CategCo.png',
-                description: '💎 OFFRE EXCLUSIVE À 💥',
-                tarifs: [
-                    { weight: '1g', price: 60.00 },
-                    { weight: '2g', price: 100.00 },
-                    { weight: '4g', price: 200.00 },
-                    { weight: '6g', price: 300.00 }
                 ]
             }
         ]
@@ -941,8 +941,9 @@ function renderProductListSimple(categoryId) {
             variantsHTML = `<div class="product-options-container" style="margin-bottom: 15px;"><label style="color: #8e8e93; font-size: 0.9rem; margin-bottom: 5px; display:block;">Choisir :</label><select id="product-variant-select" style="width: 100%; padding: 12px; border-radius: 8px; background: #2c2c2e; color: white; border: 1px solid #3a3a3c;">${product.options.map(opt => `<option value="${opt}">${opt}</option>`).join('')}</select></div>`;
         }
     
-        let tarifsHTML = product.tarifs.map(tarif => `
-            <div class="tarif-item">
+    let tarifsHTML = product.tarifs.map(tarif => `
+            <div class="tarif-item" style="position: relative;">
+                ${tarif.badge ? `<div class="tarif-badge">${tarif.badge}</div>` : ''}
                 <div class="box-tarif">
                     <div class="tarif-wieght">${tarif.weight}</div>
                     <div class="tarif-price">${tarif.price.toFixed(2)}€</div>
